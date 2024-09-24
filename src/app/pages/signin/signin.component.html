@@ -1,0 +1,19 @@
+<body>
+    <main>
+        <div class="containerLogin">
+            <form>
+                <fieldset class="fieldsLoginWithEmailAndPassword">
+                    <label class="labelEmail" for="email">E-mail de acesso</label>
+                    <input class="emailTextField" id="email" type="text" [(ngModel)]="email" name="email"
+                        placeholder="Insira seu e-mail">
+                    <label class="labelPassword" for="password">Senha</label>
+                    <input class="passwordTextField" id="password" type="password" [(ngModel)]="password"
+                        name="password" placeholder="Insira sua senha">
+                </fieldset>
+            </form>
+            <form class="formButtons">
+                <button (click)="signIn()" class="buttonSignIn">Entrar na minha conta</button>
+            </form>
+        </div>
+    </main>
+</body>
