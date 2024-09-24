@@ -1,0 +1,30 @@
+<body>
+    <section *ngIf="selectedWord">
+        <div class="word-name">
+            <p *ngIf="selectedWord.word">{{selectedWord.word}}</p>
+            <p *ngIf="selectedWord.phonetic" class="phonetic">{{selectedWord.phonetic.replaceAll('/', '')}}</p>
+        </div>
+
+        <div class="word-details">
+            <h2>Meaning</h2>
+            <p *ngIf="selectedWord.meanings[0].definitions[0].definition">
+                {{selectedWord.meanings[0].definitions[0].definition}}</p>
+        </div>
+
+        <div class="audio-player" *ngIf="getAudioUrl(selectedWord.phonetics)">
+            <audio controls>
+                <source [src]="getAudioUrl(selectedWord.phonetics)" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+
+    <div #content class="content" (scroll)="onScroll()">
+        <section>
+            <div class="words-list">
+                <div *ngFor="let word of wordList">
+                    <p class="word" (click)="loadWord(word)">{{ word }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
