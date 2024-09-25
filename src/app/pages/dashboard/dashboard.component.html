@@ -16,15 +16,51 @@
                 <source [src]="getAudioUrl(selectedWord.phonetics)" type="audio/mpeg">
             </audio>
         </div>
+
+        <p class="favorite" (click)="favoriteWord(selectedWord.word)">
+            <span class="fa fa-star checked" [ngClass]="{'checked': favorite}"></span>
+            {{favorite ? 'Unfavorite' : 'Favorite'}}
+        </p>
     </section>
 
-    <div #content class="content" (scroll)="onScroll()">
-        <section>
-            <div class="words-list">
-                <div *ngFor="let word of wordList">
-                    <p class="word" (click)="loadWord(word)">{{ word }}</p>
+    <section class="list-section">
+        <div class="tabs">
+            <button (click)="selectTab(1)" [class.active]="selectedTab === 1">Words</button>
+            <button (click)="selectTab(2)" [class.active]="selectedTab === 2">History</button>
+            <button (click)="selectTab(3)" [class.active]="selectedTab === 3">Favorites</button>
+        </div>
+
+        <div *ngIf="selectedTab === 1">
+            <div #content class="content" (scroll)="onScroll()">
+                <div class="words-list">
+                    <div class="word-container" *ngFor="let word of wordList">
+                        <p class="word" (click)="loadWord(word)">{{ word }}</p>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+            <input type="text" [(ngModel)]="searchText" (input)="onSearchChange()">
+        </div>
+
+        <div *ngIf="selectedTab === 2">
+            <div #contentHistory class="contentHistory" (scroll)="onScrollHistory()">
+                <div class="words-list">
+                    <div class="word-container" (click)="loadWord(word.word)" *ngFor="let word of historyList">
+                        <p class="word">{{ word.word }}</p>
+                        <p class="date">{{ word.added }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedTab === 3">
+            <div #contentFavorites class="contentFavorites" (scroll)="onScrollFavorites()">
+                <div class="words-list">
+                    <div class="word-container" (click)="loadWord(word.word)" *ngFor="let word of favoritesList">
+                        <p class="word">{{ word.word }}</p>
+                        <p class="date">{{ word.added }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>

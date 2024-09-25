@@ -6,7 +6,9 @@ body {
     padding: 30px;
 }
 
-.content {
+.content,
+.contentHistory,
+.contentFavorites {
     height: 400px;
     width: 100%;
     overflow-y: auto;
@@ -23,7 +25,7 @@ body {
     padding: 0;
 }
 
-.word {
+.word-container {
     background-color: #f4f4f4;
     border: 1px solid #ddd;
     padding: 10px;
@@ -34,8 +36,18 @@ body {
     transition: transform 0.2s;
 }
 
-.word:hover {
+.word-container:hover {
     transform: scale(1.05);
+}
+
+.word {
+    font-size: 16px;
+}
+
+.date {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(100, 100, 100);
 }
 
 p {
@@ -61,4 +73,41 @@ p {
 
 .audio-player {
     margin-top: 20px;
+}
+
+.tabs {
+    margin-left: 10px;
+}
+
+.tabs button {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 8px 8px 0px 0px;
+    cursor: pointer;
+    border: none;
+}
+
+.tabs button.active {
+    background-color: #90CCA8;
+    color: white;
+}
+
+.list-section {
+    width: 100%;
+}
+
+.favorite {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checked {
+    color: orange;
+}
+
+input {
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
 }
