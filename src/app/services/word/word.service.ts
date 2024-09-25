@@ -13,13 +13,13 @@ export class WordService {
   ) { }
 
   getWords(page: number): Observable<any> {
-    const apiUrl: string = "http://localhost/entries/entries.php";
+    const apiUrl: string = "http://localhost/dictionary-back/entries/entries.php";
 
     return this.http.get<any>(`${apiUrl}?page=${page}`);
   }
 
   getWordInfo(word: string): Observable<any> {
-    const apiUrl: string = "http://localhost/entries/entry.php";
+    const apiUrl: string = "http://localhost/dictionary-back/entries/entry.php";
     const token = this.authService.getToken();
 
     const headers = new HttpHeaders({

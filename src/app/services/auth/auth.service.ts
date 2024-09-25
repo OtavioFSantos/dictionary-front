@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   signIn(email: string, password: string): Observable<any> {
-    const apiUrl: string = "http://localhost/auth/signin.php";
+    const apiUrl: string = "http://localhost/dictionary-back/auth/signin.php";
 
     const body = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
